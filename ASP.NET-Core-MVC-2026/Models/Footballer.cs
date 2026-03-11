@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ASP.NET_Core_MVC_2026.Models
 {
@@ -14,11 +16,16 @@ namespace ASP.NET_Core_MVC_2026.Models
         public int Assists { get; set; }
         public int YellowCards { get; set; }
         public int RedCards { get; set; }
+
+        [Range(0, 10, ErrorMessage = "Rating must be between 0 and 10.")]
+        [Column(TypeName = "decimal(4, 2)")]
         public decimal Rating { get; set; } 
 
         // Foreign Keys
-        public int ClubId { get; set; } 
-        public int PersonalId { get; set; } 
+        public int ClubId { get; set; }
+        public Club? Club { get; set; }
+        public int PersonalId { get; set; }
+        public Personal? Personal { get; set; }
     }
     public class Personal
     {
