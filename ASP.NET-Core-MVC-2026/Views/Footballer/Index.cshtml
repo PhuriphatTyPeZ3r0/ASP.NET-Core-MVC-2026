@@ -1,24 +1,10 @@
-﻿@model IEnumerable<ASP.NET_Core_MVC_2026.Models.Footballer>;
+﻿@model IEnumerable<ASP.NET_Core_MVC_2026.Models.Footballer>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-center">Footballer</h1>
 
-@foreach (var footballer in Model)
-{
-    <p>Player ID: @footballer.Id</p>
-    <p>Name: @footballer.Name</p>
-    <p>Position: @footballer.Position</p>
-    <p>Goal: @footballer.Goals</p>
-    <p>Assist: @footballer.Assists</p>
-    @if (footballer.Goals >= 400)
-    {
-       <strong class="text-success">Top Scorer!</strong>
-    }else
-    {
-       <strong class="text-black-50">Normal Player</strong>
-    }
-    <hr/>
-}
+
+
 

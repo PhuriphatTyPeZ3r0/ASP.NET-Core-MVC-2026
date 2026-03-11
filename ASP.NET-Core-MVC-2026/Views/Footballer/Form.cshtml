@@ -1,0 +1,141 @@
+﻿@model Footballer
+
+<div class="container mt-4">
+    <h2 class="mb-4">ลงทะเบียนนักฟุตบอลใหม่</h2>
+    <form asp-action="Create" asp-controller="Footballer" method="POST" class="shadow p-4 rounded bg-light">
+
+        <h4 class="text-primary border-bottom pb-2">ข้อมูลทั่วไป (Footballer)</h4>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <label asp-for="Name" class="form-label">ชื่อนักเตะ</label>
+                <input asp-for="Name" class="form-control" placeholder="ระบุชื่อ-นามสกุล" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Position" class="form-label font-weight-bold">ตำแหน่ง</label>
+                <select asp-for="Position" class="form-select shadow-sm">
+                    <option value="">-- เลือกตำแหน่ง --</option>
+
+                    <optgroup label="Goalkeeper">
+                        <option value="GK">GK - Goalkeeper</option>
+                    </optgroup>
+
+                    <optgroup label="Defenders">
+                        <option value="CB">CB - Centre Back</option>
+                        <option value="LB">LB - Left Back</option>
+                        <option value="RB">RB - Right Back</option>
+                        <option value="LWB">LWB - Left Wing Back</option>
+                        <option value="RWB">RWB - Right Wing Back</option>
+                    </optgroup>
+
+                    <optgroup label="Midfielders">
+                        <option value="CDM">CDM - Central Defensive Midfielder</option>
+                        <option value="CM">CM - Central Midfielder</option>
+                        <option value="CAM">CAM - Central Attacking Midfielder</option>
+                        <option value="LM">LM - Left Midfielder</option>
+                        <option value="RM">RM - Right Midfielder</option>
+                    </optgroup>
+
+                    <optgroup label="Forwards">
+                        <option value="ST">ST - Striker</option>
+                        <option value="CF">CF - Centre Forward</option>
+                        <option value="LW">LW - Left Wing</option>
+                        <option value="RW">RW - Right Wing</option>
+                    </optgroup>
+                </select>
+                <span asp-validation-for="Position" class="text-danger small"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label asp-for="MatchesPlayed" class="form-label">นัดที่ลงเล่น</label>
+                <input asp-for="MatchesPlayed" type="number" class="form-control" min="0" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Goals" class="form-label">ประตู</label>
+                <input asp-for="Goals" type="number" class="form-control" min="0" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Assists" class="form-label">แอสซิสต์</label>
+                <input asp-for="Assists" type="number" class="form-control" min="0" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Rating" class="form-label">คะแนน (Rating)</label>
+                <input asp-for="Rating" type="number" step="0.01" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="YellowCards" class="form-label text-warning">ใบเหลือง</label>
+                <input asp-for="YellowCards" type="number" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="RedCards" class="form-label text-danger">ใบแดง</label>
+                <input asp-for="RedCards" type="number" class="form-control" />
+            </div>
+        </div>
+
+        <h4 class="text-primary border-bottom pb-2 mt-4">ข้อมูลสโมสร (Club)</h4>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label asp-for="Club.Name" class="form-label">ชื่อสโมสร</label>
+                <input asp-for="Club.Name" type="text" class="form-control" placeholder="เช่น Real Madrid" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Club.StadiumName" class="form-label">ชื่อสนาม</label>
+                <input asp-for="Club.StadiumName" type="text" class="form-control" placeholder="เช่น Santiago Bernabéu" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Club.City" class="form-label">เมือง</label>
+                <input asp-for="Club.City" type="text" class="form-control" placeholder="เช่น Madrid" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Club.League" class="form-label">ลีกการแข่งขัน</label>
+                <input asp-for="Club.League" type="text" class="form-control" placeholder="เช่น La Liga" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Club.ManagerName" class="form-label">ผู้จัดการทีม</label>
+                <input asp-for="Club.ManagerName" type="text" class="form-control" placeholder="เช่น Carlo Ancelotti" />
+            </div>
+        </div>
+
+        <h4 class="text-primary border-bottom pb-2 mt-4">ข้อมูลส่วนตัว (Personal)</h4>
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label asp-for="Personal.BirthDate" class="form-label">วันเกิด</label>
+                <input asp-for="Personal.BirthDate" type="date" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Personal.Nationality" class="form-label">สัญชาติ</label>
+                <input asp-for="Personal.Nationality" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Personal.Height" class="form-label">ส่วนสูง (ซม.)</label>
+                <input asp-for="Personal.Height" type="number" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Personal.Weight" class="form-label">น้ำหนัก (กก.)</label>
+                <input asp-for="Personal.Weight" type="number" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Personal.PreferredFoot" class="form-label">เท้าที่ถนัด</label>
+                <select asp-for="Personal.PreferredFoot" class="form-select">
+                    <option value="Right">ขวา</option>
+                    <option value="Left">ซ้าย</option>
+                    <option value="Both">ทั้งสองข้าง</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Personal.Bio" class="form-label">ประวัติย่อ</label>
+            <textarea asp-for="Personal.Bio" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success btn-lg">บันทึกข้อมูล</button>
+            <a href="/Footballer/Index" class="btn btn-outline-secondary btn-lg">ยกเลิก</a>
+        </div>
+    </form>
+</div>
